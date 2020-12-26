@@ -1,0 +1,74 @@
+import win32com.client as wincl
+import time
+import xlrd 
+
+speak = wincl.Dispatch("SAPI.SpVoice")
+
+loc = ("Desktop/Book1.xlsx") 
+  
+
+wb = xlrd.open_workbook(loc) 
+sheet = wb.sheet_by_index(0) 
+  
+
+sheet.cell_value(0, 0)
+
+
+a = input(speak.Speak(sheet.cell_value(2, 0)))
+
+if a.lower() == sheet.cell_value(2, 1).lower():
+    speak.Speak("you have passed first case successfully")
+    
+    b = int(input(speak.Speak(sheet.cell_value(3, 0)+"kindly enter the age in digit otherwise an error will occur")))
+    
+    if b == sheet.cell_value(3, 1):
+        speak.Speak("you have also passed second case successfully")
+        time.sleep(0.5)
+        speak.Speak("here we go!")
+        time.sleep(0.25)
+        speak.Speak("have a good day")
+
+        
+        
+    else:
+        speak.Speak("you have not entered age per name,which you have enterd above")
+        time.sleep(0.5)
+        speak.Speak("Kindly run the code again and enter correct details")
+        
+        
+else:
+    speak.Speak("you have entered wrong name as per our data enter the name once again")
+
+    time.sleep(0.5)
+    c = input(speak.Speak(sheet.cell_value(2, 0)))
+    
+    if c.upper() == sheet.cell_value(2, 1).upper():
+        speak.Speak("you have passed first case successfully")
+        time.sleep(0.5)
+        
+    
+        b = int(input(speak.Speak(sheet.cell_value(3, 0)+"kindly enter the age in digit otherwise an error will occur")))
+    
+        if b == sheet.cell_value(3, 1):
+            speak.Speak("you have also passed second case successfully")
+            time.sleep(0.5)
+            speak.Speak("here we go!")
+            time.sleep(0.25)
+            speak.Speak("have a good day")
+        
+        
+
+        else:
+            speak.Speak("you have not entered age per name,which you have enterd above")
+            time.sleep(0.5)
+            speak.Speak("Kindly run the code again and enter correct details")
+    
+    else:
+        speak.Speak("once again you have enterd wrong name ")
+        time.sleep(0.25)
+        speak.Speak("Kindly run the code again and enter correct details")
+        
+    
+             
+    
+    
